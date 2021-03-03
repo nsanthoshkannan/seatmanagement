@@ -21,7 +21,7 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-02-28T13:19:30.258Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-03-03T07:11:12.073Z")
 
 @Controller
 public class UserApiController implements UserApi {
@@ -55,15 +55,6 @@ public class UserApiController implements UserApi {
 
     public ResponseEntity<User> getUserByName(@ApiParam(value = "The name that needs to be fetched. Use user1 for testing. ",required=true) @PathVariable("username") String username) {
         String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/xml")) {
-            try {
-                return new ResponseEntity<User>(objectMapper.readValue("<null>  <id>123456789</id>  <username>aeiou</username>  <Name>aeiou</Name>  <email>aeiou</email>  <password>aeiou</password>  <mobile>aeiou</mobile>  <dob>2000-01-23</dob></null>", User.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/xml", e);
-                return new ResponseEntity<User>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity<User>(objectMapper.readValue("{  \"password\" : \"password\",  \"dob\" : \"2000-01-23\",  \"mobile\" : \"mobile\",  \"id\" : 0,  \"email\" : \"email\",  \"username\" : \"username\",  \"Name\" : \"Name\"}", User.class), HttpStatus.NOT_IMPLEMENTED);

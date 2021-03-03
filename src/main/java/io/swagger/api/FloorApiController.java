@@ -20,7 +20,7 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-02-28T13:19:30.258Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-03-03T07:11:12.073Z")
 
 @Controller
 public class FloorApiController implements FloorApi {
@@ -49,15 +49,6 @@ public class FloorApiController implements FloorApi {
 
     public ResponseEntity<Floor> getFloorById(@ApiParam(value = "ID of Floor to return",required=true) @PathVariable("floorId") Long floorId) {
         String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/xml")) {
-            try {
-                return new ResponseEntity<Floor>(objectMapper.readValue("<null>  <id>123456789</id>  <name>First FLoor</name>  <description>aeiou</description>  <updatedtime>2000-01-23T04:56:07.000Z</updatedtime></null>", Floor.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/xml", e);
-                return new ResponseEntity<Floor>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
         if (accept != null && accept.contains("application/json")) {
             try {
                 return new ResponseEntity<Floor>(objectMapper.readValue("{  \"updatedtime\" : \"2000-01-23T04:56:07.000+00:00\",  \"name\" : \"First FLoor\",  \"description\" : \"description\",  \"id\" : 0}", Floor.class), HttpStatus.NOT_IMPLEMENTED);
@@ -68,6 +59,20 @@ public class FloorApiController implements FloorApi {
         }
 
         return new ResponseEntity<Floor>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+    public ResponseEntity<List<Floor>> getFloors() {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<List<Floor>>(objectMapper.readValue("[ {  \"updatedtime\" : \"2000-01-23T04:56:07.000+00:00\",  \"name\" : \"First FLoor\",  \"description\" : \"description\",  \"id\" : 0}, {  \"updatedtime\" : \"2000-01-23T04:56:07.000+00:00\",  \"name\" : \"First FLoor\",  \"description\" : \"description\",  \"id\" : 0} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<List<Floor>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<List<Floor>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<Void> updateFloor(@ApiParam(value = "Floor details that needs to be added to the Company" ,required=true )  @Valid @RequestBody Floor body) {

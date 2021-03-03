@@ -3,7 +3,6 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.threeten.bp.OffsetDateTime;
@@ -15,7 +14,7 @@ import javax.validation.constraints.*;
  * Seat
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-02-28T13:19:30.258Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-03-03T07:11:12.073Z")
 
 
 
@@ -33,41 +32,8 @@ public class Seat   {
   @JsonProperty("description")
   private String description = null;
 
-  /**
-   * Status of the Seat
-   */
-  public enum StatusEnum {
-    FREE("Free"),
-    
-    CLAIMRAISED("ClaimRaised"),
-    
-    OCCUPIED("Occupied");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static StatusEnum fromValue(String text) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("status")
-  private StatusEnum status = null;
+  private String status = null;
 
   @JsonProperty("updatedtime")
   private OffsetDateTime updatedtime = null;
@@ -154,7 +120,7 @@ public class Seat   {
     this.description = description;
   }
 
-  public Seat status(StatusEnum status) {
+  public Seat status(String status) {
     this.status = status;
     return this;
   }
@@ -166,11 +132,11 @@ public class Seat   {
   @ApiModelProperty(value = "Status of the Seat")
 
 
-  public StatusEnum getStatus() {
+  public String getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 

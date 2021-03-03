@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-02-28T13:19:30.258Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-03-03T07:11:12.073Z")
 
 @Api(value = "floor", description = "the floor API")
 @RequestMapping(value = "/v2")
@@ -31,8 +31,8 @@ public interface FloorApi {
     @ApiResponses(value = { 
         @ApiResponse(code = 405, message = "Invalid input") })
     @RequestMapping(value = "/floor",
-        produces = { "application/xml", "application/json" }, 
-        consumes = { "application/json", "application/xml" },
+        produces = { "application/json" }, 
+        consumes = { "application/json" },
         method = RequestMethod.POST)
     ResponseEntity<Void> addFloor(@ApiParam(value = "Floor details that needs to be added to the Company" ,required=true )  @Valid @RequestBody Floor body);
 
@@ -42,7 +42,7 @@ public interface FloorApi {
         @ApiResponse(code = 400, message = "Invalid ID supplied"),
         @ApiResponse(code = 404, message = "Floor not found") })
     @RequestMapping(value = "/floor/{floorId}",
-        produces = { "application/xml", "application/json" }, 
+        produces = { "application/json" }, 
         method = RequestMethod.DELETE)
     ResponseEntity<Void> deleteFloor(@ApiParam(value = "Floor id to delete",required=true) @PathVariable("floorId") Long floorId);
 
@@ -53,9 +53,18 @@ public interface FloorApi {
         @ApiResponse(code = 400, message = "Invalid ID supplied"),
         @ApiResponse(code = 404, message = "Floor not found") })
     @RequestMapping(value = "/floor/{floorId}",
-        produces = { "application/xml", "application/json" }, 
+        produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<Floor> getFloorById(@ApiParam(value = "ID of Floor to return",required=true) @PathVariable("floorId") Long floorId);
+
+
+    @ApiOperation(value = "Returns all Floor details", nickname = "getFloors", notes = "Returns all Floor details", response = Floor.class, responseContainer = "List", tags={ "Floor", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "successful operation", response = Floor.class, responseContainer = "List") })
+    @RequestMapping(value = "/floor",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<List<Floor>> getFloors();
 
 
     @ApiOperation(value = "Update an existing floor", nickname = "updateFloor", notes = "", tags={ "Floor", })
@@ -63,8 +72,8 @@ public interface FloorApi {
         @ApiResponse(code = 400, message = "Invalid ID supplied"),
         @ApiResponse(code = 405, message = "Invalid input") })
     @RequestMapping(value = "/floor",
-        produces = { "application/xml", "application/json" }, 
-        consumes = { "application/json", "application/xml" },
+        produces = { "application/json" }, 
+        consumes = { "application/json" },
         method = RequestMethod.PUT)
     ResponseEntity<Void> updateFloor(@ApiParam(value = "Floor details that needs to be added to the Company" ,required=true )  @Valid @RequestBody Floor body);
 

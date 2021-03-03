@@ -22,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-02-28T13:19:30.258Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-03-03T07:11:12.073Z")
 
 @Api(value = "seat", description = "the seat API")
 @RequestMapping(value = "/v2")
@@ -32,8 +32,8 @@ public interface SeatApi {
     @ApiResponses(value = { 
         @ApiResponse(code = 405, message = "Invalid input") })
     @RequestMapping(value = "/seat",
-        produces = { "application/xml", "application/json" }, 
-        consumes = { "application/json", "application/xml" },
+        produces = { "application/json" }, 
+        consumes = { "application/json" },
         method = RequestMethod.POST)
     ResponseEntity<Void> addSeat(@ApiParam(value = "Seat details that needs to be added to a Floor" ,required=true )  @Valid @RequestBody Seat body);
 
@@ -43,7 +43,7 @@ public interface SeatApi {
         @ApiResponse(code = 400, message = "Invalid ID supplied"),
         @ApiResponse(code = 404, message = "Floor not found") })
     @RequestMapping(value = "/seat/{seatId}",
-        produces = { "application/xml", "application/json" }, 
+        produces = { "application/json" }, 
         method = RequestMethod.DELETE)
     ResponseEntity<Void> deleteSeat(@ApiParam(value = "Floor id to delete",required=true) @PathVariable("seatId") Long seatId);
 
@@ -54,9 +54,18 @@ public interface SeatApi {
         @ApiResponse(code = 400, message = "Invalid ID supplied"),
         @ApiResponse(code = 404, message = "Floor not found") })
     @RequestMapping(value = "/seat/{seatId}",
-        produces = { "application/xml", "application/json" }, 
+        produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<Floor> getSeatById(@ApiParam(value = "ID of Seat to return",required=true) @PathVariable("seatId") Long seatId);
+
+
+    @ApiOperation(value = "Returns all Floor details", nickname = "getSeats", notes = "Returns all Seat details", response = Seat.class, responseContainer = "List", tags={ "Seat", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "successful operation", response = Seat.class, responseContainer = "List") })
+    @RequestMapping(value = "/seat",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<List<Seat>> getSeats();
 
 
     @ApiOperation(value = "Update an existing Seat", nickname = "updateSeat", notes = "", tags={ "Seat", })
@@ -64,8 +73,8 @@ public interface SeatApi {
         @ApiResponse(code = 400, message = "Invalid ID supplied"),
         @ApiResponse(code = 405, message = "Invalid input") })
     @RequestMapping(value = "/seat",
-        produces = { "application/xml", "application/json" }, 
-        consumes = { "application/json", "application/xml" },
+        produces = { "application/json" }, 
+        consumes = { "application/json" },
         method = RequestMethod.PUT)
     ResponseEntity<Void> updateSeat(@ApiParam(value = "Seat details that needs to be added to a Floor" ,required=true )  @Valid @RequestBody Seat body);
 
