@@ -1,14 +1,20 @@
 package io.swagger.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import org.threeten.bp.OffsetDateTime;
-import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.Valid;
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.validation.annotation.Validated;
+import org.threeten.bp.OffsetDateTime;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * Floor
@@ -18,18 +24,24 @@ import javax.validation.constraints.*;
 
 
 
-
+@Entity
+@Table
 public class Floor   {
   @JsonProperty("id")
+  @Id
+  @Column
   private Long id = null;
 
   @JsonProperty("name")
+  @Column
   private String name = null;
 
   @JsonProperty("description")
+  @Column
   private String description = null;
 
   @JsonProperty("updatedtime")
+  @Column
   private OffsetDateTime updatedtime = null;
 
   public Floor id(Long id) {

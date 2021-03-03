@@ -28,9 +28,7 @@ paths:
       operationId: "addFloor"
       consumes:
       - "application/json"
-      - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
       - in: "body"
@@ -51,9 +49,7 @@ paths:
       operationId: "updateFloor"
       consumes:
       - "application/json"
-      - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
       - in: "body"
@@ -66,7 +62,24 @@ paths:
         "400":
           description: "Invalid ID supplied"
         "405":
-          description: "Invalid input"          
+          description: "Invalid input"
+    get:
+      tags:
+      - "Floor"
+      summary: "Returns all Floor details"
+      description: "Returns all Floor details"
+      operationId: "getFloors"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            items:
+              $ref: "#/definitions/Floor"
+            type: "array"
+
 
   /floor/{floorId}:
     get:
@@ -76,7 +89,6 @@ paths:
       description: "Returns a single Floor Details"
       operationId: "getFloorById"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
       - name: "floorId"
@@ -101,7 +113,6 @@ paths:
       description: ""
       operationId: "deleteFloor"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
       - name: "floorId"
@@ -125,9 +136,7 @@ paths:
       operationId: "addSeat"
       consumes:
       - "application/json"
-      - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
       - in: "body"
@@ -148,9 +157,7 @@ paths:
       operationId: "updateSeat"
       consumes:
       - "application/json"
-      - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
       - in: "body"
@@ -163,7 +170,23 @@ paths:
         "400":
           description: "Invalid ID supplied"
         "405":
-          description: "Invalid input"          
+          description: "Invalid input"
+    get:
+      tags:
+      - "Seat"
+      summary: "Returns all Floor details"
+      description: "Returns all Seat details"
+      operationId: "getSeats"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            items:
+              $ref: "#/definitions/Seat"
+            type: "array"          
 
   /seat/{seatId}:
     get:
@@ -173,7 +196,6 @@ paths:
       description: "Returns a single Seat Details"
       operationId: "getSeatById"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
       - name: "seatId"
@@ -198,7 +220,6 @@ paths:
       description: ""
       operationId: "deleteSeat"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
       - name: "seatId"
@@ -221,7 +242,6 @@ paths:
       description: "This can only be done by the logged in user."
       operationId: "createUser"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
       - in: "body"
@@ -241,7 +261,6 @@ paths:
       description: ""
       operationId: "createUsersWithArrayInput"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
       - in: "body"
@@ -264,7 +283,6 @@ paths:
       description: ""
       operationId: "getUserByName"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
       - name: "username"
@@ -288,7 +306,6 @@ paths:
       description: "This can only be done by the logged in user."
       operationId: "updateUser"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
       - name: "username"
@@ -313,7 +330,6 @@ paths:
       summary: "Delete user"
       operationId: "deleteUser"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
       - name: "username"
