@@ -1,5 +1,6 @@
 package io.swagger.model;
 
+import java.util.Date;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -36,7 +37,7 @@ public class Seat   {
   private String status = null;
 
   @JsonProperty("updatedtime")
-  private OffsetDateTime updatedtime = null;
+  private Date updatedtime = null;
 
   public Seat id(Long id) {
     this.id = id;
@@ -140,7 +141,7 @@ public class Seat   {
     this.status = status;
   }
 
-  public Seat updatedtime(OffsetDateTime updatedtime) {
+  public Seat updatedtime(Date updatedtime) {
     this.updatedtime = updatedtime;
     return this;
   }
@@ -153,11 +154,11 @@ public class Seat   {
 
   @Valid
 
-  public OffsetDateTime getUpdatedtime() {
+  public Date getUpdatedtime() {
     return updatedtime;
   }
 
-  public void setUpdatedtime(OffsetDateTime updatedtime) {
+  public void setUpdatedtime(Date updatedtime) {
     this.updatedtime = updatedtime;
   }
 

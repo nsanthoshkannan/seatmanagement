@@ -13,11 +13,11 @@ public class Seats {
 
 	@Id
 	@Column
-	private int id;
+	private Long id;
 	@Column
-	private int floorId;
+	private Long floorId;
 	@Column
-	private int seatNumber;
+	private Long seatNumber;
 	@Column
 	private String description;
 	@Column
@@ -25,27 +25,35 @@ public class Seats {
 	@Column
 	private Date updatedTime;
 
-	public int getId() {
+	public Seats(Long floorId, Long seatNumber, String description, String status) {
+		super();
+		this.floorId = floorId;
+		this.seatNumber = seatNumber;
+		this.description = description;
+		this.status = status;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public int getFloorId() {
+	public Long getFloorId() {
 		return floorId;
 	}
 
-	public void setFloorId(int floorId) {
+	public void setFloorId(Long floorId) {
 		this.floorId = floorId;
 	}
 
-	public int getSeatNumber() {
+	public Long getSeatNumber() {
 		return seatNumber;
 	}
 
-	public void setSeatNumber(int seatNumber) {
+	public void setSeatNumber(Long seatNumber) {
 		this.seatNumber = seatNumber;
 	}
 
@@ -78,9 +86,9 @@ public class Seats {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + floorId;
-		result = prime * result + id;
-		result = prime * result + seatNumber;
+		result = prime * result + ((floorId == null) ? 0 : floorId.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((seatNumber == null) ? 0 : seatNumber.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((updatedTime == null) ? 0 : updatedTime.hashCode());
 		return result;
@@ -100,11 +108,20 @@ public class Seats {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (floorId != other.floorId)
+		if (floorId == null) {
+			if (other.floorId != null)
+				return false;
+		} else if (!floorId.equals(other.floorId))
 			return false;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
-		if (seatNumber != other.seatNumber)
+		if (seatNumber == null) {
+			if (other.seatNumber != null)
+				return false;
+		} else if (!seatNumber.equals(other.seatNumber))
 			return false;
 		if (status == null) {
 			if (other.status != null)

@@ -5,7 +5,7 @@ Create Table Users(
   password VARCHAR(500) NOT NULL,  
   name VARCHAR(100) NOT NULL,  
   email  VARCHAR(50) NOT NULL, 
-  mobile INT NOT NULL,
+  mobile VARCHAR(50) NOT NULL,
   dob DATE, 
   updateddatetime DATE
 );

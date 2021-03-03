@@ -56,7 +56,7 @@ public interface SeatApi {
     @RequestMapping(value = "/seat/{seatId}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Floor> getSeatById(@ApiParam(value = "ID of Seat to return",required=true) @PathVariable("seatId") Long seatId);
+    ResponseEntity<Seat> getSeatById(@ApiParam(value = "ID of Seat to return",required=true) @PathVariable("seatId") Long seatId);
 
 
     @ApiOperation(value = "Returns all Floor details", nickname = "getSeats", notes = "Returns all Seat details", response = Seat.class, responseContainer = "List", tags={ "Seat", })

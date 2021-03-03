@@ -23,7 +23,7 @@ public class SeatService {
 	}
 
 	// getting a specific record
-	public Seats getSeatById(int id) {
+	public Seats getSeatById(Long id) {
 		return SeatRepository.findOne(id);
 	}
 
@@ -32,7 +32,7 @@ public class SeatService {
 	}
 
 	// deleting a specific record
-	public void delete(int id) {
+	public void delete(Long id) {
 		SeatRepository.delete(id);
 	}
 
